@@ -1,3 +1,8 @@
+.form {
+  position: relative;
+  width: 100%;
+}
+
 .input {
   height: 46px;
   width: 93%;
@@ -19,13 +24,18 @@
   width: 46px;
   height: 46px;
   border: none;
+  position: absolute;
+  right: 3.5%;
   /* border-radius: 23px; */
-  background-color: #fff;
+  background-color: transparent;
   /* background-color: #3faf6c; */
 }
 
 @media screen and (min-width: 560px) {
   .input {
     width: 558px;
+  }
+  .btn {
+    right: 0;
   }
 }

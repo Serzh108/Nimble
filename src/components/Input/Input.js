@@ -18,7 +18,9 @@ export default function Input() {
     e.preventDefault();
     const time = new Date();
     console.log('formSubmit time: ', time);
-    const name = nameItem ? nameItem : 'No name ' + time.toLocaleTimeString();
+    const name = nameItem
+      ? nameItem
+      : 'No name tracker #' + time.toLocaleDateString();
     console.log('formSubmit name : ', name);
     const isRun = true;
     const nameInputId = shortid.generate();
@@ -30,7 +32,7 @@ export default function Input() {
   };
 
   return (
-    <form onSubmit={formSubmit}>
+    <form className={styles.form} onSubmit={formSubmit}>
       <input
         type="text"
         value={nameItem}

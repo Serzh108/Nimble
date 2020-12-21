@@ -76,22 +76,23 @@ export default function ItemList() {
       <h2>Разница времени: {deltaTime(tempDate)}</h2>
       <ul className={styles.list}>
         {items.map(item => (
-          <li key={item.name} id={item.id}>
-            {item.name} {item.isRun ? deltaTime(item.time) : item.fixedTime}
-            {/* {item.name} {item.fixedTime} {deltaTime(item.time)} */}
-            {/* {item.name} {item.time.toLocaleTimeString()} {deltaTime(item.time)} */}
-            {item.isRun ? (
-              <Button onBtnClick={clickPauseHandler}>
-                <PauseIcon width="24" height="24" fill="#000" />
+          <li key={item.name} id={item.id} className={styles.listItem}>
+            <span>{item.name}</span>
+            <span>{item.isRun ? deltaTime(item.time) : item.fixedTime}</span>
+            <div>
+              {item.isRun ? (
+                <Button onBtnClick={clickPauseHandler}>
+                  <PauseIcon width="24" height="24" fill="#000" />
+                </Button>
+              ) : (
+                <Button onBtnClick={clickPauseHandler}>
+                  <PlayIcon width="24" height="24" fill="#000" />
+                </Button>
+              )}
+              <Button onBtnClick={clickRemoveHandler}>
+                <RemoveIcon width="24" height="24" fill="#f00" />
               </Button>
-            ) : (
-              <Button onBtnClick={clickPauseHandler}>
-                <PlayIcon width="24" height="24" fill="#000" />
-              </Button>
-            )}
-            <Button onBtnClick={clickRemoveHandler}>
-              <RemoveIcon width="24" height="24" fill="#f00" />
-            </Button>
+            </div>
           </li>
         ))}
       </ul>
