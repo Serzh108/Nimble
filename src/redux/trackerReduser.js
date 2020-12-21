@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const state = {
   items: [],
-  isLoading: false,
 };
 
 export const trackerSlice = createSlice({
@@ -17,17 +16,16 @@ export const trackerSlice = createSlice({
       ...state,
       items: [
         ...state.items.map(item =>
-          item.id === payload ? { ...item, isRun: !item.isRun } : item,
+          // item.id === payload ? { ...item, isRun: !item.isRun, fixedTime: 'eas' } : item,
+          item.id === payload.id
+            ? { ...item, isRun: !item.isRun, fixedTime: payload.fixedTime }
+            : item,
         ),
       ],
     }),
     deleteItem: (state, { payload }) => ({
       ...state,
       items: [...state.items.filter(item => item.id !== payload)],
-    }),
-    resetIsLoading: (state, { payload }) => ({
-      ...state,
-      isLoading: false,
     }),
   },
 });

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIsRun, removeItem } from '../../redux/trackerOperations';
-import moment from 'moment';
+// import moment from 'moment';
 import Button from '../Button/Button';
+import deltaTime from '../../helpers/deltaTime';
 import { ReactComponent as PauseIcon } from '../../icons/pause_circle_outline-24px.svg';
 import { ReactComponent as RemoveIcon } from '../../icons/remove_circle_outline-24px.svg';
 import { ReactComponent as PlayIcon } from '../../icons/play_circle_outline-24px.svg';
@@ -49,19 +50,19 @@ export default function ItemList() {
   // showTime();
   // console.log('deltaTime = ', moment().startOf(tempDate).fromNow());
   // const x = moment() - tempDate;
+  // =-=-==-=-=
+  // const deltaTime = tempDate => {
+  //   const delta = (new Date() - tempDate) / 1000;
+  //   // const x = (time - tempDate) / 1000;
+  //   const h = toTwoDigit(Math.floor(delta / 3600));
+  //   const min = toTwoDigit(Math.floor(delta / 60 - h * 60));
+  //   const sec = toTwoDigit(Math.floor(delta % 60));
+  //   const fullTime = `${h} : ${min} : ${sec}`;
+  //   return fullTime;
+  // };
 
-  const deltaTime = tempDate => {
-    const delta = (new Date() - tempDate) / 1000;
-    // const x = (time - tempDate) / 1000;
-    const h = toTwoDigit(Math.floor(delta / 3600));
-    const min = toTwoDigit(Math.floor(delta / 60 - h * 60));
-    const sec = toTwoDigit(Math.floor(delta % 60));
-    const fullTime = `${h} : ${min} : ${sec}`;
-    return fullTime;
-  };
-
-  const toTwoDigit = data => data.toString().padStart(2, '0');
-
+  // const toTwoDigit = data => data.toString().padStart(2, '0');
+  // =-=-==-=-=
   // console.log(`${h} : ${min} : ${sec}`);
   // console.log('moment() = ', moment());
   // console.log('tempDate = ', tempDate);
@@ -76,7 +77,9 @@ export default function ItemList() {
       <ul className={styles.list}>
         {items.map(item => (
           <li key={item.name} id={item.id}>
-            {item.name} {item.time.toLocaleTimeString()} {deltaTime(item.time)}
+            {item.name} {item.isRun ? deltaTime(item.time) : item.fixedTime}
+            {/* {item.name} {item.fixedTime} {deltaTime(item.time)} */}
+            {/* {item.name} {item.time.toLocaleTimeString()} {deltaTime(item.time)} */}
             {item.isRun ? (
               <Button onBtnClick={clickPauseHandler}>
                 <PauseIcon width="24" height="24" fill="#000" />

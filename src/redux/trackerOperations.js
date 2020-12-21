@@ -1,4 +1,5 @@
 import { trackerSlice } from './trackerReduser';
+import deltaTime from '../helpers/deltaTime';
 
 const setTracker = data => (dispatch, getState) => {
   console.log('In Operations -> name: ', data);
@@ -6,8 +7,15 @@ const setTracker = data => (dispatch, getState) => {
 };
 
 const changeIsRun = id => (dispatch, getState) => {
-  // console.log('In Operations -> id: ', id)
-  dispatch(trackerSlice.actions.changingIsRun(id));
+  const { items } = getState().tracker;
+  const fixTime = items.reduce(
+    (acc, item) => (item.id === id ? deltaTime(item.time) : acc),
+    null,
+  );
+  console.log('In Operations -> items: ', items);
+  console.log('In Operations -> fixTime: ', fixTime);
+  console.log('In Operations -> id: ', id);
+  dispatch(trackerSlice.actions.changingIsRun({ id, fixedTime: fixTime }));
 };
 
 const removeItem = id => (dispatch, getState) => {

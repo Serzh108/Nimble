@@ -23,7 +23,9 @@ export default function Input() {
     const isRun = true;
     const nameInputId = shortid.generate();
     // console.log('nameInputId = ', nameInputId);
-    dispatch(setTracker({ name, time, isRun, id: nameInputId }));
+    dispatch(
+      setTracker({ name, time, isRun, id: nameInputId, fixedTime: null }),
+    );
     setNameItem('');
   };
 
