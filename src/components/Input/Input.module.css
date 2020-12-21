@@ -1,0 +1,31 @@
+.input {
+  height: 46px;
+  width: 93%;
+  border: 1px solid #7f7f7f;
+  /* outline: none; */
+  border-radius: 23px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+::placeholder {
+  font-size: 17px;
+  color: red;
+}
+
+.btn {
+  width: 46px;
+  height: 46px;
+  border: none;
+  /* border-radius: 23px; */
+  background-color: #fff;
+  /* background-color: #3faf6c; */
+}
+
+@media screen and (min-width: 560px) {
+  .input {
+    width: 558px;
+  }
+}

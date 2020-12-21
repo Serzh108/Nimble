@@ -11,7 +11,9 @@ const rootReducer = {
   [trackerSlice.name]: trackerSlice.reducer,
 };
 
-export const store = configureStore({
+const store = configureStore({
   reducer: rootReducer,
   middleware,
 });
+
+export default store;
