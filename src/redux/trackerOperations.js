@@ -9,7 +9,12 @@ const setTracker = data => (dispatch, getState) => {
 const changeIsRun = id => (dispatch, getState) => {
   const { items } = getState().tracker;
   const fixTime = items.reduce(
-    (acc, item) => (item.id === id ? deltaTime(item.time) : acc),
+    (acc, item) => {
+      // console.log('item.time : ', item.time);
+      // console.log('deltaTime(item.time) : ', deltaTime(item.time));
+      return item.id === id && item.isRun ? deltaTime(item.time) : acc;
+    },
+    //  ((item.id === id) ? deltaTime(item.time) : acc),
     null,
   );
   console.log('In Operations -> items: ', items);

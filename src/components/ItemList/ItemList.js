@@ -19,8 +19,8 @@ export default function ItemList() {
   // console.log('tempDate = ', tempDate);
 
   const intervalId = useRef();
-  // const [time, setTime] = useState(new Date());
-  const [time, setTime] = useState(tempDate);
+  const [time, setTime] = useState(new Date());
+  // const [time, setTime] = useState();
   useEffect(() => {
     intervalId.current = setInterval(() => setTime(new Date()), 1000);
     return () => () => clearInterval(intervalId.current);
@@ -36,24 +36,8 @@ export default function ItemList() {
     dispatch(removeItem(li.id));
   };
 
-  // const showTime = () => {
-  //   const startTime = items[0].time;
-  //   console.log('startTime = ', startTime);
-  //   const nowTime = new Date();
-  //   console.log('nowTime = ', nowTime);
-  //   const deltaTime = nowTime - startTime;
-  //   console.log('deltaTime = ', deltaTime);
-  //   // const test = moment().startOf('hour').fromNow();
-  //   const test = moment().format('h:mm:ss a');
-  //   console.log('test = ', test);
-  // };
-  // showTime();
-  // console.log('deltaTime = ', moment().startOf(tempDate).fromNow());
-  // const x = moment() - tempDate;
-  // =-=-==-=-=
   // const deltaTime = tempDate => {
   //   const delta = (new Date() - tempDate) / 1000;
-  //   // const x = (time - tempDate) / 1000;
   //   const h = toTwoDigit(Math.floor(delta / 3600));
   //   const min = toTwoDigit(Math.floor(delta / 60 - h * 60));
   //   const sec = toTwoDigit(Math.floor(delta % 60));
@@ -62,13 +46,6 @@ export default function ItemList() {
   // };
 
   // const toTwoDigit = data => data.toString().padStart(2, '0');
-  // =-=-==-=-=
-  // console.log(`${h} : ${min} : ${sec}`);
-  // console.log('moment() = ', moment());
-  // console.log('tempDate = ', tempDate);
-  // console.log('x = ', x/1000);
-  // console.log('deltaTime1 = ', moment(x).format("hh:mm:ss"));
-  // console.log('deltaTime2 = ', moment().from(tempDate));
 
   return (
     <>

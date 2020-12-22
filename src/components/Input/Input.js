@@ -20,7 +20,7 @@ export default function Input() {
     console.log('formSubmit time: ', time);
     const name = nameItem
       ? nameItem
-      : 'No name tracker #' + time.toLocaleDateString();
+      : 'No name tracker #' + time.toLocaleTimeString();
     console.log('formSubmit name : ', name);
     const isRun = true;
     const nameInputId = shortid.generate();

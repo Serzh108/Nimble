@@ -6,6 +6,7 @@
 .input {
   height: 46px;
   width: 93%;
+  padding-left: 23px;
   border: 1px solid #7f7f7f;
   /* outline: none; */
   border-radius: 23px;
@@ -17,7 +18,7 @@
 
 ::placeholder {
   font-size: 17px;
-  color: red;
+  /* color: red; */
 }
 
 .btn {
