@@ -34,8 +34,8 @@ export default function ItemList() {
 
   return (
     <>
-      <h2>Текущее время: {time && time.toLocaleTimeString()}</h2>
-      <h2>Разница времени: {deltaTime(tempDate)}</h2>
+      {/* <h2>Текущее время: {time && time.toLocaleTimeString()}</h2>
+      <h2>Разница времени: {deltaTime(tempDate)}</h2> */}
       <ul className={styles.list}>
         {items.map(item => (
           <li
