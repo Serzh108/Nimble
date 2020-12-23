@@ -12,15 +12,11 @@ import styles from './ItemList.module.css';
 export default function ItemList() {
   const dispatch = useDispatch();
   const items = useSelector(state => state.tracker.items);
-  // console.log('items = ', items);
-  // console.log('new Date() = ', new Date());
-
   const tempDate = items[0]?.time;
-  // console.log('tempDate = ', tempDate);
 
   const intervalId = useRef();
   const [time, setTime] = useState(new Date());
-  // const [time, setTime] = useState();
+
   useEffect(() => {
     intervalId.current = setInterval(() => setTime(new Date()), 1000);
     return () => () => clearInterval(intervalId.current);
@@ -36,27 +32,20 @@ export default function ItemList() {
     dispatch(removeItem(li.id));
   };
 
-  // const deltaTime = tempDate => {
-  //   const delta = (new Date() - tempDate) / 1000;
-  //   const h = toTwoDigit(Math.floor(delta / 3600));
-  //   const min = toTwoDigit(Math.floor(delta / 60 - h * 60));
-  //   const sec = toTwoDigit(Math.floor(delta % 60));
-  //   const fullTime = `${h} : ${min} : ${sec}`;
-  //   return fullTime;
-  // };
-
-  // const toTwoDigit = data => data.toString().padStart(2, '0');
-
   return (
     <>
       <h2>Текущее время: {time && time.toLocaleTimeString()}</h2>
       <h2>Разница времени: {deltaTime(tempDate)}</h2>
       <ul className={styles.list}>
         {items.map(item => (
-          <li key={item.name} id={item.id} className={styles.listItem}>
-            <span>{item.name}</span>
-            <span>{item.isRun ? deltaTime(item.time) : item.fixedTime}</span>
-            <div>
+          <li
+            key={item.name}
+            id={item.id}
+            className={item.isRun ? styles.listItemActive : styles.listItem}
+          >
+            <span className={styles.ItemPart}>{item.name}</span>
+            <div className={styles.ItemPart1}>
+              <span>{item.isRun ? deltaTime(item.time) : item.fixedTime}</span>
               {item.isRun ? (
                 <Button onBtnClick={clickPauseHandler}>
                   <PauseIcon width="24" height="24" fill="#000" />

@@ -1,2 +1,0 @@
-# Nimble
-Nimble test task

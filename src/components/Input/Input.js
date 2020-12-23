@@ -10,21 +10,17 @@ export default function Input() {
   const [nameItem, setNameItem] = useState('');
 
   const changeHandler = e => {
-    // console.log('changeHandler!', e.target.value);
     setNameItem(e.target.value);
   };
 
   const formSubmit = e => {
     e.preventDefault();
     const time = new Date();
-    console.log('formSubmit time: ', time);
     const name = nameItem
       ? nameItem
-      : 'No name tracker #' + time.toLocaleTimeString();
-    console.log('formSubmit name : ', name);
+      : 'No name tracker # ' + time.toLocaleTimeString();
     const isRun = true;
     const nameInputId = shortid.generate();
-    // console.log('nameInputId = ', nameInputId);
     dispatch(
       setTracker({ name, time, isRun, id: nameInputId, fixedTime: null }),
     );

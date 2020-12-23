@@ -1,14 +1,14 @@
 .form {
   position: relative;
   width: 100%;
+  margin-bottom: 28px;
 }
 
 .input {
   height: 46px;
   width: 93%;
   padding-left: 23px;
-  border: 1px solid #7f7f7f;
-  /* outline: none; */
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 23px;
 }
 
@@ -18,7 +18,7 @@
 
 ::placeholder {
   font-size: 17px;
-  /* color: red; */
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .btn {
@@ -27,9 +27,7 @@
   border: none;
   position: absolute;
   right: 3.5%;
-  /* border-radius: 23px; */
   background-color: transparent;
-  /* background-color: #3faf6c; */
 }
 
 @media screen and (min-width: 560px) {
