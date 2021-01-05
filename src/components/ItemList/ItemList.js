@@ -4,6 +4,7 @@ import { changeIsRun, removeItem } from '../../redux/trackerOperations';
 // import moment from 'moment';
 import Button from '../Button/Button';
 import deltaTime from '../../helpers/deltaTime';
+import convertToClock from '../../helpers/convertToClock';
 import { ReactComponent as PauseIcon } from '../../icons/pause_circle_outline-24px.svg';
 import { ReactComponent as RemoveIcon } from '../../icons/remove_circle_outline-24px.svg';
 import { ReactComponent as PlayIcon } from '../../icons/play_circle_outline-24px.svg';
@@ -12,7 +13,6 @@ import styles from './ItemList.module.css';
 export default function ItemList() {
   const dispatch = useDispatch();
   const items = useSelector(state => state.tracker.items);
-  const tempDate = items[0]?.time;
 
   const intervalId = useRef();
   const [time, setTime] = useState(new Date());
@@ -34,8 +34,7 @@ export default function ItemList() {
 
   return (
     <>
-      {/* <h2>Текущее время: {time && time.toLocaleTimeString()}</h2>
-      <h2>Разница времени: {deltaTime(tempDate)}</h2> */}
+      {/* <h2>Текущее время: {time && time.toLocaleTimeString()}</h2> */}
       <ul className={styles.list}>
         {items.map(item => (
           <li
@@ -45,7 +44,11 @@ export default function ItemList() {
           >
             <span className={styles.ItemPart}>{item.name}</span>
             <div className={styles.ItemPart1}>
-              <span>{item.isRun ? deltaTime(item.time) : item.fixedTime}</span>
+              <span>
+                {item.isRun
+                  ? convertToClock(deltaTime(item.time, item.fixedTime))
+                  : convertToClock(item.fixedTime)}
+              </span>
               {item.isRun ? (
                 <Button onBtnClick={clickPauseHandler}>
                   <PauseIcon width="24" height="24" fill="#000" />

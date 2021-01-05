@@ -17,7 +17,12 @@ export const trackerSlice = createSlice({
       items: [
         ...state.items.map(item =>
           item.id === payload.id
-            ? { ...item, isRun: !item.isRun, fixedTime: payload.fixedTime }
+            ? {
+                ...item,
+                time: !item.isRun ? payload.time : item.time,
+                isRun: !item.isRun,
+                fixedTime: item.isRun ? payload.fixedTime : item.fixedTime,
+              }
             : item,
         ),
       ],

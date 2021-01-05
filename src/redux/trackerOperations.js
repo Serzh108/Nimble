@@ -7,11 +7,21 @@ const setTracker = data => (dispatch, getState) => {
 
 const changeIsRun = id => (dispatch, getState) => {
   const { items } = getState().tracker;
+  const currentDate = new Date();
+  // console.log('currentDate = ', currentDate);
   const fixTime = items.reduce(
-    (acc, item) => (item.id === id && item.isRun ? deltaTime(item.time) : acc),
-    null,
+    (acc, item) =>
+      item.id === id && item.isRun ? deltaTime(item.time, item.fixedTime) : acc,
+    0,
   );
-  dispatch(trackerSlice.actions.changingIsRun({ id, fixedTime: fixTime }));
+  // console.log('fixTime = ', fixTime);
+  dispatch(
+    trackerSlice.actions.changingIsRun({
+      id,
+      time: currentDate,
+      fixedTime: fixTime,
+    }),
+  );
 };
 
 const removeItem = id => (dispatch, getState) => {

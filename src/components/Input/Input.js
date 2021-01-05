@@ -21,9 +21,7 @@ export default function Input() {
       : 'No name tracker # ' + time.toLocaleTimeString();
     const isRun = true;
     const nameInputId = shortid.generate();
-    dispatch(
-      setTracker({ name, time, isRun, id: nameInputId, fixedTime: null }),
-    );
+    dispatch(setTracker({ name, time, isRun, id: nameInputId, fixedTime: 0 }));
     setNameItem('');
   };
 
